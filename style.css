@@ -1,0 +1,1058 @@
+/* style.css (Updated with Notification Styles) */
+:root {
+    --primary-brand: #2563EB;
+    /* Modern Blue */
+    --secondary-brand: #475569;
+    /* Slate Gray */
+    --background: #FDFBF5;
+    /* Light Cream */
+    --text-dark: #1E293B;
+    /* Dark Slate Blue */
+    --text-light: #475569;
+    /* Lighter Slate */
+    --accent: #10B981;
+    /* Emerald Green */
+    --white: #FFFFFF;
+    --border-color: #E5E7EB;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: #ffeaac;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+a {
+    color: var(--primary-brand);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--secondary-brand);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Header / Navbar --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    /* Adjusted padding for mobile */
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-text h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.brand-text a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* Adjusted gap for mobile */
+    width: 100%;
+    /* Full width on mobile */
+    justify-content: space-between;
+    /* Space out items */
+    margin-top: 1rem;
+    /* Add margin for spacing */
+}
+
+
+
+@media (min-width: 768px) {
+    .site-header {
+        flex-wrap: nowrap;
+        /* No wrapping on larger screens */
+        padding: 1rem 2rem;
+    }
+
+    .top-controls {
+        width: auto;
+        /* Auto width on larger screens */
+        margin-top: 0;
+    }
+
+    .top-nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+}
+
+.top-nav a {
+    font-weight: 500;
+    color: var(--text-dark);
+    /* Text color ko dark kiya */
+    padding: 0.5rem 0.75rem;
+    /* Padding added for hover effect */
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+    color: var(--primary-brand);
+    /* Subtle blue background highlight on hover */
+    background-color: rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+    /* Halka sa upar uthana */
+}
+
+.top-nav a:after {
+    /* Hover par sirf neeche underline ke liye (Agar aapko chahiye to) */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-brand);
+    transition: width 0.2s ease;
+}
+
+.top-nav a:hover:after {
+    width: 80%;
+}
+
+#globalSearch {
+    padding: 0.6rem 1.25rem;
+    /* Padding badhaya */
+    border: 2px solid var(--border-color);
+    /* Border ko 2px kiya */
+    border-radius: 999px;
+    /* Fully rounded/Pill shape */
+    min-width: 200px;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+#globalSearch:focus {
+    border-color: var(--primary-brand);
+    /* Blue glow effect */
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    #globalSearch {
+        min-width: 180px;
+        width: auto;
+    }
+}
+
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background-color: var(--primary-brand);
+    /* #2563EB - Clear Blue */
+    color: var(--white);
+    /* Ab yahan koi box-shadow nahi hai, button solid dikhega */
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Zoom effect for interaction */
+    /* Hover par ek halki shadow, jo blur nahi karegi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.btn-secondary {
+    background-color: hsl(354, 90%, 53%);
+    /* Vibrant Red */
+    color: var(--white);
+    /* Ab yahan koi box-shadow nahi hai, button solid dikhega */
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    background-color: #b02a37;
+    /* Darker Red on hover */
+    transform: scale(1.05);
+    /* Zoom effect for interaction */
+    /* Hover par ek halki shadow, jo blur nahi karegi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cta-md {
+    padding: 0.6rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-ghost-white {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    /* Glass Effect */
+    transition: all 0.3s ease;
+}
+
+.btn-ghost-white:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Fills up on hover */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    /* White glow */
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    background-color: var(--secondary-brand);
+    /* Grey background */
+    color: var(--white);
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    /* Pill shape */
+    font-weight: 600;
+}
+
+.btn-small:hover {
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+.btn-cta-lg {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    /* NEW: समान चौड़ाई के लिए मिनिमम चौड़ाई सेट की गई */
+    min-width: 250px;
+    text-align: center;
+    /* सुनिश्चित करता है कि आइकन और टेक्स्ट केंद्र में रहें */
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content-centered {
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.hero-content-centered h2 {
+    color: #FFD700;
+    /* New: Vibrant Gold/Yellow Color */
+    font-size: 1.8rem;
+    /* New: Reduced font size for mobile */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
+}
+
+.hero-content-centered .lead {
+    font-size: 1.1rem;
+    /* Adjusted font size */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .hero-content-centered h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content-centered .lead {
+        font-size: 1.25rem;
+    }
+}
+
+
+.cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quick-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.typed-cursor,
+.typed-cursor-p {
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    -ms-animation: blink 0.7s infinite;
+    -o-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+    color: #FFD700;
+    /* New: Cursor color matches new text color */
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.chip a {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* --- General Layout & Sections --- */
+main.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+section {
+    padding: 3rem 0;
+}
+
+section h2,
+section h3 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+/* --- Cards --- */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.state-card {
+    cursor: pointer;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card .card-content>div {
+    margin-top: auto;
+}
+
+
+/* --- Carousel --- */
+.carousel-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.slide figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: var(--white);
+    padding: 2rem 1rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+}
+
+.carousel-arrow.left {
+    left: 1rem;
+}
+
+.carousel-arrow.right {
+    right: 1rem;
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 3rem 1.5rem;
+}
+
+.footer-cards-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .footer-cards-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.footer-cards-section h4 {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-brand);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.footer-cards-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-cards-section li a {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.footer-cards-section li a:hover {
+    color: var(--primary-brand);
+}
+
+/* --- Modal --- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    max-width: 600px;
+    width: 90%;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+/* --- State/Category Page Specifics --- */
+.filter-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-row label {
+    font-weight: 500;
+}
+
+.filter-row select {
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+#stateDetailContainer h2 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    text-align: left;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-brand);
+    padding-bottom: 0.5rem;
+}
+
+.state-banner {
+    background: var(--white);
+    padding: 1rem;
+    /* Padding kam kiya mobile ke liye */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin: 2rem 0;
+}
+
+
+/* === YEH WOH CODE HAI JO DESKTOP VIEW BANATA HAI === */
+.state-details {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.state-details img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.state-text {
+    flex-grow: 1;
+}
+
+/* ======================================================= */
+
+
+/* --- AI Chat Button --- */
+.ai-chat-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.ai-chat-button:hover {
+    transform: scale(1.1);
+}
+
+.ai-chat-button img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid var(--white);
+}
+
+/* --- Trivia Card --- */
+.trivia-wrap {
+    padding: 2rem 1.5rem;
+}
+
+#triviaCard {
+    background: linear-gradient(135deg, var(--primary-brand), var(--secondary-brand));
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.trivia-carousel {
+    position: relative;
+    height: 100px;
+    /* Adjust height as needed */
+}
+
+.trivia-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trivia-slide.active {
+    opacity: 1;
+}
+
+#triviaCard h4 {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Gamification Points --- */
+.points-bell-button {
+    background-color: var(--white);
+    /* White background */
+    border: 2px solid var(--primary-brand);
+    /* Blue border */
+    color: var(--text-dark);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    /* Circular shape */
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.points-bell-button:hover {
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+#pointsCounter {
+    background-color: var(--secondary-brand);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    font-weight: 700;
+}
+
+
+/* --- [FIX] Toast Notification Styling --- */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.toast-notification.success {
+    background-color: #28a745;
+    /* Green */
+}
+
+.toast-notification.warning {
+    background-color: #dc3545;
+    /* Red */
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- Coupon Modal Styles (from original file) --- */
+.coupon-modal-content {
+    text-align: center;
+}
+
+.coupon-code-display {
+    background: #f3f4f6;
+    border: 2px dashed var(--primary-brand);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    margin: 1rem 0;
+}
+
+.copy-coupon-btn {
+    width: 100%;
+}
+
+.points-bell-button {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+}
+
+/* Points waale Number ko Red Color Dein */
+#user-score {
+    color: var(--white);
+    background-color: #e63946;
+    /* Red background for attention */
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* --- Media Queries (Responsive Code) --- */
+
+@media (max-width: 768px) {
+
+    /* === YEH WOH CODE HAI JO MOBILE VIEW THEEK KAREGA === */
+    .state-details {
+        flex-direction: column;
+        /* Image aur text ko upar-neeche kar dega */
+    }
+
+    .state-details img {
+        width: 100%;
+        /* Image poori chaudai le lega */
+        height: auto;
+    }
+
+    .state-banner {
+        padding: 1rem;
+    }
+
+    /* ===================================================== */
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    /* Desktop par hide rahega */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 100;
+    /* Sabse upar rahe */
+    line-height: 1;
+    padding: 0.5rem;
+}
+
+.site-header.menu-active .top-controls {
+    transform: translateX(0);
+    /* Jab active ho toh dikhe */
+    box-shadow: var(--shadow);
+    /* Shadow add karein */
+}
+
+@media screen and (max-width: 768px) {
+
+    /* 1. Header Layout Fix: Brand और Menu Toggle को सही जगह रखें */
+    .site-header {
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    /* 2. Hamburger Icon Dikhayein */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* 3. Top Controls (Search Bar + Bell Icon) को एक लाइन में रखें */
+    .top-controls {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        /* OLD: width: auto; */
+        /* REMOVED: width: auto; ताकि यह स्क्रीन के बाहर न जाए */
+        width: 100%;
+        /* ADDED: 100% width set करें */
+        justify-content: space-between;
+        /* ADDED: स्पेसिंग को मैनेज करें */
+
+        gap: 10px;
+        order: 3;
+    }
+
+    /* 4. NAVIGATION LINKS (TOP-NAV) को TOP-TO-BOTTOM स्लाइड के लिए सेट करें */
+    .top-nav {
+        display: flex;
+        position: fixed;
+        top: 65px;
+        /* Header के नीचे शुरू करें */
+        left: 0;
+        width: 100%;
+        /* पूरी चौड़ाई लें */
+        height: auto;
+        /* हाइट को कंटेंट के हिसाब से रखें */
+        min-height: 0;
+
+        /* बैकग्राउंड को सफेद/कार्ड बैकग्राउंड दें ताकि टेक्स्ट दिखे */
+        background-color: var(--white);
+        /* White background for visibility */
+
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-lg);
+        /* स्लाइड होने पर अच्छी शैडो दें */
+
+        /* TOP-TO-BOTTOM SLIDE के लिए translateY का उपयोग करें */
+        transition: transform 0.4s ease-out, visibility 0s 0.4s;
+        transform: translateY(-100%);
+        /* ऊपर (Top) से छिपा रहेगा */
+
+        z-index: 90;
+        overflow-y: auto;
+        visibility: hidden;
+    }
+
+    /* 5. Menu Active होने पर दिखें */
+    .top-nav.active {
+        transform: translateY(0);
+        /* नीचे स्लाइड करें */
+        visibility: visible;
+        transition: transform 0.4s ease-out;
+    }
+
+    /* Menu links को stack करें */
+    .top-nav a {
+        display: block;
+        padding: 12px 0;
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Search bar और Lang toggle को एडजस्ट करें */
+    .search-lang {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+
+        /* ADDED: Search और Bell Icon को थोड़ा स्पेस दें */
+        flex-grow: 1;
+        max-width: 75%;
+        /* ADDED: Search बार को Bell Icon के लिए जगह छोड़ने दें */
+    }
+
+    #globalSearch {
+        flex-grow: 1;
+        min-width: 100px;
+    }
+}
